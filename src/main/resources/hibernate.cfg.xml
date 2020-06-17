@@ -6,9 +6,7 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <mapping resource="BookEntity.hbm.xml"/>
-    <mapping resource="TestEntity.hbm.xml"/>
-    <mapping resource="UserEntity.hbm.xml"/>
+
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
