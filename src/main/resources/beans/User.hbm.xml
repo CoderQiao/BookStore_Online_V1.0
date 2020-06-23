@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.qtlplay.bookstore.beans.User" table="user" schema="bookstore">
+        <id name="userId">
+            <column name="USER_ID" sql-type="int(4)" />
+            <generator class="native"></generator>
+        </id>
+        <property name="loginName">
+            <column name="LOGIN_NAME" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="realName">
+            <column name="REAL_NAME" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="password">
+            <column name="PASSWORD" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="email">
+            <column name="EMAIL" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="gender">
+            <column name="GENDER" sql-type="varchar(2)" length="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

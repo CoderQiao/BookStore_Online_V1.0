@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.qtlplay.bookstore.beans.Book" table="book" schema="bookstore">
+        <id name="bookId">
+            <column name="BOOK_ID" sql-type="int(4)"/>
+        </id>
+        <property name="bookName">
+            <column name="BOOK_NAME" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="author">
+            <column name="AUTHOR" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="price">
+            <column name="PRICE" sql-type="double" precision="-1"/>
+        </property>
+        <property name="image">
+            <column name="IMAGE" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="categoryId">
+            <column name="CATEGORY_ID" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>

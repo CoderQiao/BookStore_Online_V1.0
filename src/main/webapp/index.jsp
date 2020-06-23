@@ -1,23 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 乔同良
-  Date: 2020/6/17
-  Time: 22:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-<html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="styles/style.css"/>
+<title>叮当网上书店</title>
 </head>
 <body>
-<h4><%=path%></h4>
-<h4><%=basePath%></h4>
-<a href="<%=path%>/views/hello.jsp">跳转</a>
+  <s:include value="/WEB-INF/view/header.jsp"/>
+  <s:include value="/WEB-INF/view/nav.jsp"/>
+  <div id="main-container" class="clearfix">
+    <div id="aside">
+      <s:action name="category-list" executeResult="true" namespace="/"/>
+    </div>
+    <div id="content">
+      <s:if test="#parameters.page!=null">
+        <s:include value="/WEB-INF/view/%{#parameters.page}.jsp"/>
+      </s:if>
+      <s:else>
+        <s:action name="book-list" executeResult="true" namespace="/"/>
+      </s:else>
+    </div>
+  </div>
+  <s:include value="/WEB-INF/view/footer.jsp"/>
 </body>
 </html>

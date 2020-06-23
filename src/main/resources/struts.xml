@@ -6,11 +6,76 @@
 
 <struts>
 
-    <package name="default">
-        <action name=""></action>
+    <!--  打开开发者模式  -->
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <!--Test
+
+        唯一标识用的是 name,而不是ID
+        <action name="testAction" class="cn.qtlplay.bookstore.actions.TestAction" method="list">
+            <result name="success">/views/hello.jsp</result>
+        </action>
+        <action name="user-list" class="cn.qtlplay.bookstore.actions.UserAction" method="list">
+            <result name="success">/views/hello.jsp</result>
+        </action>
+
+         -->
+        <!-- 首页目录列表 -->
+        <action name="category-list" class="categoryAction" method="list">
+            <result name="success">/WEB-INF/view/menu.jsp</result>
+        </action>
+
+        <!-- 首页书籍列表 -->
+        <action name="book-list" class="bookAction" method="list">
+            <result name="success">/WEB-INF/view/books.jsp</result>
+        </action>
+
+        <!-- 按分类查询书籍 -->
+        <action name="searchBookByCategoryId" class="bookAction" method="searchBookByCategoryId">
+            <result name="success">/index.jsp?page=books</result>
+        </action>
+
+        <action name="searchBookByName" class="bookAction" method="searchBookByName">
+            <result name="success">/index.jsp?page=books</result>
+        </action>
+
+        <!-- 添加购物车 -->
+        <action name="addOrUpdateShopCart" class="ShopCartAction" method="addOrUpdateShopCart">
+            <result name="success">/index.jsp?page=cart</result>
+        </action>
+        <!-- 减少商品数量 -->
+        <action name="removeShopCart" class="ShopCartAction" method="removeShopCart">
+            <result name="success">/index.jsp?page=cart</result>
+        </action>
+        <action name="deleteFromShopCart" class="ShopCartAction" method="deleteFromShopCart">
+            <result name="success">/index.jsp?page=cart</result>
+        </action>
+
+        <!-- 更新购物车 -->
+        <action name="checkout" class="ShopCartAction" method="checkout">
+            <result name="success">/index.jsp?page=order</result>
+            <result name="input">/index.jsp?page=login</result>
+            <result name="error">/index.jsp?page=error</result>
+        </action>
+
+        <action name="login" class="userAction" method="login">
+            <result name="success">/index.jsp?page=cart</result>
+            <result name="error">/index.jsp?page=error</result>
+        </action>
+
+        <action name="logout" class="userAction" method="logout">
+            <result name="success">/index.jsp?page=cart</result>
+        </action>
+
+        <action name="register" class="userAction" method="register">
+            <result name="success">/index.jsp</result>
+            <result name="input">/index.jsp?page=register</result>
+        </action>
+
     </package>
 
 </struts>
 
-<struts>
-</struts>
+

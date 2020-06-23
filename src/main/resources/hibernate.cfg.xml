@@ -4,13 +4,22 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
-    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+      <!-- 配置连接数据库的基本信息
+      <property name="connection.username">root</property>
+      <property name="connection.password"></property>
+      <property name="connection.url">jdbc:mysql://localhost:3306/ssh_user</property>
+      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      -->
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    <!-- hibernate 所使用的数据库方言 -->
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+    <!-- 执行操作时是否在控制台打印 SQL -->
+    <property name="show_sql">false</property>
+
+    <!-- 是否对 SQL 进行格式化 -->
+    <property name="format_sql">true</property>
+
   </session-factory>
 </hibernate-configuration>

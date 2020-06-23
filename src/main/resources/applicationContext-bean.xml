@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="applicationContext.xml"/><!-- 出错过 -->
+
+    <!-- Test
+    <bean id="testDao" class="cn.qtlplay.bookstore.daos.TestDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="testService" class="cn.qtlplay.bookstore.services.TestService">
+        <property name="testDao" ref="testDao"></property>
+    </bean>
+    <bean id="testAction" class="cn.qtlplay.bookstore.actions.TestAction" scope="prototype">
+        <property name="testService" ref="testService"></property>
+    </bean>
+
+    唯一标识为ID，不是name
+
+    <bean id="userDao" class="cn.qtlplay.bookstore.daos.UserDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="userService" class="cn.qtlplay.bookstore.services.UserService">
+        <property name="entityDao" ref="userDao"></property>
+    </bean>
+    <bean id="userAction" class="cn.qtlplay.bookstore.actions.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+
+            犯过错误，要求三者必须保持一致，不然会报空指针异常（不明原因）
+            属性中，最好使用接口，注入接口不需要代理类，不会出现无法实例的运行时异常
+
+    </bean>
+    -->
+
+    <!--category-->
+    <bean id="categoryDao" class="cn.qtlplay.bookstore.daos.CategoryDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="categoryService" class="cn.qtlplay.bookstore.services.CategoryService">
+        <property name="entityDao" ref="categoryDao"></property>
+    </bean>
+    <bean id="categoryAction" class="cn.qtlplay.bookstore.actions.CategoryAction" scope="prototype">
+        <property name="service" ref="categoryService"></property>
+    </bean>
+    <!--book-->
+    <bean id="bookDao" class="cn.qtlplay.bookstore.daos.BookDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="bookService" class="cn.qtlplay.bookstore.services.BookService">
+        <property name="entityDao" ref="bookDao"></property>
+    </bean>
+    <bean id="bookAction" class="cn.qtlplay.bookstore.actions.BookAction" scope="prototype">
+        <property name="service" ref="bookService"></property>
+    </bean>
+
+    <!--  cart  -->
+    <bean id="ShopCartAction" class="cn.qtlplay.bookstore.actions.ShopCartAction" scope="prototype">
+        <property name="bookService" ref="bookService"></property>
+    </bean>
+
+    <!--  User  -->
+    <bean id="userDao" class="cn.qtlplay.bookstore.daos.UserDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="userService" class="cn.qtlplay.bookstore.services.UserService">
+        <property name="entityDao" ref="userDao"></property>
+    </bean>
+    <bean id="userAction" class="cn.qtlplay.bookstore.actions.UserAction" scope="prototype">
+        <property name="service" ref="userService"></property>
+    </bean>
+
+</beans>
