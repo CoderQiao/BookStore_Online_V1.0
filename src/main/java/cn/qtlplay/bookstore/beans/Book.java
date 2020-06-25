@@ -11,6 +11,18 @@ public class Book {
     private String image;
     private int categoryId;
 
+    public Book() {
+        super();
+    }
+
+    public Book(String bookName, String author, double price, String image, int categoryId) {
+        this.bookName = bookName;
+        this.author = author;
+        this.price = price;
+        this.image = image;
+        this.categoryId = categoryId;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

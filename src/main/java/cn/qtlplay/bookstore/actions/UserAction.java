@@ -3,7 +3,8 @@ package cn.qtlplay.bookstore.actions;/*
     @date 2020/6/21 - 13:25
 */
 
-import cn.qtlplay.bookstore.beans.Order;
+
+import cn.qtlplay.bookstore.beans.Admin;
 import cn.qtlplay.bookstore.beans.User;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
@@ -29,6 +30,11 @@ public class UserAction extends AbstractEntityActionImpl<User> implements Sessio
     public void setSession(Map<String, Object> map) {
         session = map;
     }
+
+    public void setModel(User model) {
+        this.model = model;
+    }
+
     @Override
     public User getModel() {
         if(model == null){
@@ -58,7 +64,7 @@ public class UserAction extends AbstractEntityActionImpl<User> implements Sessio
     }
 
     public String logout(){
-        session.remove("user");
+        session.clear();
         return SUCCESS;
     }
 
@@ -67,6 +73,7 @@ public class UserAction extends AbstractEntityActionImpl<User> implements Sessio
         if(this.getPassword2().equals(this.model.getPassword())){
             try {
                 this.getService().save(model);
+                this.addActionMessage("添加成功！用户名为："+model.getLoginName());
             }catch (Exception e){
                 this.addActionError(e.getMessage());
                 return INPUT;
@@ -78,5 +85,28 @@ public class UserAction extends AbstractEntityActionImpl<User> implements Sessio
         }
         return SUCCESS;
     }
+    public String manage(){
+        return SUCCESS;
+    }
 
+    public String list(){
+        Admin admin = (Admin)session.get("admin");
+        if(admin == null){
+            return INPUT;
+        }
+        List<User> users = this.getService().findAll();
+        session.put("users",users);
+        return SUCCESS;
+    }
+    public String deleteUserById(){
+        this.getService().delete(model.getUserId());
+        this.addActionMessage("已删除用户信息："+this.getService().get(model.getUserId()));
+        return SUCCESS;
+    }
+    public String updateUserById(){
+        User user_update = this.getService().get(model.getUserId());
+        model = user_update;
+        this.addActionMessage("用户信息已更新！用户名为："+model.getLoginName());
+        return SUCCESS;
+    }
 }

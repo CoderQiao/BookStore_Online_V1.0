@@ -12,18 +12,19 @@
     <s:else>
       <p><s:property value="#session.user.realName"/>
       (<s:property value="#session.user.loginName"/>)，欢迎您!
-      <s:if test="#session.user.orders!=null">
-        <s:if test="#session.user.orders.size>0">
-      	<a href="index.jsp?page=orders">[我的订单]</a> |
+      <s:if test="#session.orders!=null">
+        <s:if test="#session.orders.size>0">
+      	<a href="index.jsp?page=order">[我的订单]</a> |
       	</s:if>
-      </s:if> 
-      <a href="logout">[注销]</a> |
+      </s:if>
+      <a href="logout">[退出]</a> |
+      <a href="index.jsp?page=user">个人信息</a>|
     </s:else>
       <a class="icon-24 cart" href="/index.jsp?page=cart">购物车</a>
-      <s:if test="#session.cart!=null">
+      <s:if test="#session.order_list!=null">
         <sup class="badge"><s:property value="#session.order_list.size"/></sup>
       </s:if>
-       |
+
     <s:form action="searchBookByName" theme="simple" method="get" cssClass="search-bar">
   	  <p>
   	    <s:textfield name="keyword"/>

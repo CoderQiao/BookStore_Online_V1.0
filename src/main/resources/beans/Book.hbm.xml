@@ -7,6 +7,7 @@
     <class name="cn.qtlplay.bookstore.beans.Book" table="book" schema="bookstore">
         <id name="bookId">
             <column name="BOOK_ID" sql-type="int(4)"/>
+            <generator class="native"></generator>
         </id>
         <property name="bookName">
             <column name="BOOK_NAME" sql-type="varchar(100)" length="100"/>

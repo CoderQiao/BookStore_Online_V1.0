@@ -4,7 +4,7 @@
 <h2>购物车</h2>
 
 <s:if test="#session.totalPrice > 0">
-  <s:form theme="simple" action="checkout" method="post">
+  <s:form theme="simple" action="AddOrders" method="post">
     <table id="cart" class="table table-striped">
       <tr><th>图书名称</th><th>价格</th><th>数量</th><th>操作</th></tr>
     <s:iterator value="#session.order_list">
@@ -23,7 +23,7 @@
 	      <s:else>
 	      <span>[-]</span>
 	      </s:else>
-	      <s:textfield name="bookNumber" cssClass="number"/>
+            <s:property value="bookNumber"></s:property>
 	      <a href="addOrUpdateShopCart?bookId=<s:property value="bookId"/>">[+]</a>
 	    </td>
 	    <td>
@@ -39,8 +39,7 @@
       </tr>
     </table>
     <p class="action-bar">
-      <s:submit value="更新购物车"/>
-      <a href="checkout" class="button button-red">去结算</a>
+      <s:submit value="购买"/>
     </p>
   </s:form>
 </s:if>

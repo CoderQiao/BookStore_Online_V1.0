@@ -62,7 +62,8 @@ public class ShopCartAction extends ActionSupport implements SessionAware {
 
     public String addOrUpdateShopCart(){
 
-       Map<Integer,Order> orders = (Map<Integer, Order>) session.get("orders");
+        //第二次添加购物车，提示ArrayList 不能转换为 Map
+       Map<Integer,Order> orders = (Map<Integer, Order>)session.get("orders");
        Book book = (Book)this.getBookService().get(this.getBookId());
        if(orders != null){
            if(orders.containsKey(this.getBookId())){
@@ -101,32 +102,6 @@ public class ShopCartAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
-    public String checkout(){
-        User user = (User)session.get("user");
-        Map<Integer,Order> orders = (Map<Integer, Order>) session.get("orders");
-        if(user == null){
-            this.addActionMessage("请先登录！");
-            return INPUT;
-        }
-        if(orders == null){
-            this.addActionError("购物车为空，去添加书籍吧！");
-            return ERROR;
-        }
-        for(Integer bookId : orders.keySet()){
-            Order order = orders.get(bookId);
-            if(order.getBookNumber() == 0){
-                orders.remove(bookId,order);
-            }
-            if(order.getBookId() == this.getBookId()){
-                orders.remove(bookId,order);
-                order.setBookNumber(this.getBookNumber());
-                orders.put(bookId,order);
-            }
-        }
-        session.put("orders",orders);
-        this.updateOrderList();
-        return SUCCESS;
-    }
 
     public void updateOrderList(){
         Map<Integer,Order> orders = (Map<Integer, Order>) session.get("orders");

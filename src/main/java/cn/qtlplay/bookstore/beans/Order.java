@@ -25,6 +25,16 @@ public class Order {
         this.priceTotal = priceTotal;
     }
 
+    public Order(int bookId, String bookName, double price, int userId, String loginName, int bookNumber, long priceTotal) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.price = price;
+        this.userId = userId;
+        this.loginName = loginName;
+        this.bookNumber = bookNumber;
+        this.priceTotal = priceTotal;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

@@ -9,5 +9,9 @@
         <module name="BookStore_Online" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BookStore_Admin" target="8" />
+      <module name="BookStore_User" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

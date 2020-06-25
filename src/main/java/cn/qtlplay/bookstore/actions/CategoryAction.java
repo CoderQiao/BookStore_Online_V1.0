@@ -20,10 +20,7 @@ public class CategoryAction extends AbstractEntityActionImpl<Category> implement
     }
 
     public String list(){
-        List<Category> categories = (List<Category>) session.get("categories");
-        if(categories == null){
-            categories = this.getService().findAll();
-        }
+        List<Category> categories = this.getService().findAll();
         session.put("categories",categories);
         return SUCCESS;
     }

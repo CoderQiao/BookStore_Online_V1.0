@@ -10,4 +10,5 @@ public class UserDao extends AbstractEntityDaoImpl<User> {
     public UserDao() {
         super();
     }
+
 }

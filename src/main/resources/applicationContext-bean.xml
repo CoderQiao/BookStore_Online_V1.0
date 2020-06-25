@@ -54,6 +54,17 @@
         <property name="service" ref="bookService"></property>
     </bean>
 
+    <!--  Order  -->
+    <bean id="orderDao" class="cn.qtlplay.bookstore.daos.OrderDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="orderService" class="cn.qtlplay.bookstore.services.OrderService">
+        <property name="entityDao" ref="orderDao"></property>
+    </bean>
+    <bean id="orderAction" class="cn.qtlplay.bookstore.actions.OrderAction" scope="prototype">
+        <property name="service" ref="orderService"></property>
+    </bean>
+
     <!--  cart  -->
     <bean id="ShopCartAction" class="cn.qtlplay.bookstore.actions.ShopCartAction" scope="prototype">
         <property name="bookService" ref="bookService"></property>
@@ -69,5 +80,14 @@
     <bean id="userAction" class="cn.qtlplay.bookstore.actions.UserAction" scope="prototype">
         <property name="service" ref="userService"></property>
     </bean>
-
+    <!-- Admin -->
+    <bean id="adminDao" class="cn.qtlplay.bookstore.daos.AdminDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="adminService" class="cn.qtlplay.bookstore.services.AdminService">
+        <property name="entityDao" ref="adminDao"></property>
+    </bean>
+    <bean id="adminAction" class="cn.qtlplay.bookstore.actions.AdminAction" scope="prototype">
+        <property name="service" ref="adminService"></property>
+    </bean>
 </beans>

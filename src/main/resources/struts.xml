@@ -22,6 +22,8 @@
         </action>
 
          -->
+<!--user-->
+
         <!-- 首页目录列表 -->
         <action name="category-list" class="categoryAction" method="list">
             <result name="success">/WEB-INF/view/menu.jsp</result>
@@ -53,11 +55,14 @@
             <result name="success">/index.jsp?page=cart</result>
         </action>
 
-        <!-- 更新购物车 -->
-        <action name="checkout" class="ShopCartAction" method="checkout">
-            <result name="success">/index.jsp?page=order</result>
+        <!-- 添加账单 -->
+        <action name="AddOrders" class="orderAction" method="AddOrders">
+            <result name="success" type="redirect">/order-list</result>
             <result name="input">/index.jsp?page=login</result>
-            <result name="error">/index.jsp?page=error</result>
+        </action>
+
+        <action name="order-list" class="orderAction" method="list">
+            <result name="success">/index.jsp?page=order</result>
         </action>
 
         <action name="login" class="userAction" method="login">
@@ -74,6 +79,66 @@
             <result name="input">/index.jsp?page=register</result>
         </action>
 
+
+<!--manage-->
+        <!-- 用户管理 -->
+        <action name="manage" class="userAction" method="manage">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+        <action name="user-list" class="userAction" method="list">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=user</result>
+            <result name="input">/WEB-INF/manage/manage.jsp?page=login</result>
+        </action>
+        <action name="deleteUserById" class="userAction" method="deleteUserById">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+        <action name="updateUserById" class="userAction" method="updateUserById">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=register</result>
+        </action>
+        <action name="toAddUser" class="userAction" method="manage">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=register</result>
+        </action>
+        <action name="addUser" class="userAction" method="register">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+
+        <!-- 书籍管理 -->
+        <action name="book-manage" class="bookAction" method="list">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=book</result>
+        </action>
+        <action name="deleteBookById" class="bookAction" method="deleteBookById">
+            <result name="success" type="redirect">/book-manage</result>
+        </action>
+        <action name="updateBookById" class="bookAction" method="updateBookById">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=book_edit</result>
+        </action>
+        <action name="toAddBook" class="bookAction" method="manage">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=book_edit</result>
+        </action>
+        <action name="addBoob" class="bookAction" method="addBoob">
+            <result name="success" type="redirect">/book-manage</result>
+        </action>
+
+        <!-- 订单管理 -->
+        <action name="order-manage" class="orderAction" method="orderList">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=order</result>
+            <result name="input">/WEB-INF/manage/manage.jsp?page=login</result>
+        </action>
+        <action name="deleteOrderById" class="orderAction" method="deleteOrderById">
+            <result name="success" type="redirect">/order-manage</result>
+        </action>
+        <action name="about" class="orderAction" method="about">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=about</result>
+        </action>
+
+<!-- admin -->
+        <action name="toAdminLogin" class="adminAction" method="toAdminLogin">
+            <result name="success">/WEB-INF/manage/manage.jsp?page=login</result>
+        </action>
+        <action name="admin-login" class="adminAction" method="admin_login">
+            <result name="success" type="redirect">/user-list</result>
+            <result name="input">/WEB-INF/manage/manage.jsp?page=login</result>
+        </action>
     </package>
 
 </struts>
