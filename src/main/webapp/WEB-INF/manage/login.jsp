@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<h2>用户登录</h2>
+<h2>管理员登录</h2>
 <s:form theme="simple" action="admin-login" method="post">
   <s:actionerror/>
   <p><label>登录名:</label><s:textfield name="model.loginName"/></p>

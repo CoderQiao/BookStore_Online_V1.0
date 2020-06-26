@@ -139,6 +139,9 @@
             <result name="success" type="redirect">/user-list</result>
             <result name="input">/WEB-INF/manage/manage.jsp?page=login</result>
         </action>
+        <action name="admin-logout" class="cn.qtlplay.bookstore.actions.AdminAction" method="logout">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
     </package>
 
 </struts>

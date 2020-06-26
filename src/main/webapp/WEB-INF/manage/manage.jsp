@@ -17,7 +17,7 @@
   </h1>
   <div id="tool-bar">
       <p><s:property value="#session.admin.loginName"/>，欢迎您!
-      <a href="logout">[退出]</a>
+      <a href="admin-logout">[退出]</a>
   </div>
 </div>
 <%--nav--%>

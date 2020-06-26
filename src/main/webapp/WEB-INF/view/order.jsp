@@ -8,7 +8,7 @@
      <label>用户：</label><em><s:property value="#session.user.loginName"/></em>
   </caption>
     <tr><th>图书</th><th>单价</th><th>数量</th><th>价格</th></tr>
-  <s:iterator value="#session.orders">
+  <s:iterator value="#session.order_list">
     <tr>
       <td>
         <img class="book small" alt="<s:property value="bookName"/>" src="images/book.png"/>

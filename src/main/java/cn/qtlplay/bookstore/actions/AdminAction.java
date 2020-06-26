@@ -44,5 +44,9 @@ public class AdminAction extends AbstractEntityActionImpl<Admin> implements Sess
     public String toAdminLogin(){
         return SUCCESS;
     }
+    public String logout(){
+        session.clear();
+        return SUCCESS;
+    }
 
 }

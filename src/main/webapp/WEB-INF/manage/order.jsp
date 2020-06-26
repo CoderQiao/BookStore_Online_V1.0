@@ -8,15 +8,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<h2>用户管理</h2>
+<h2>订单管理</h2>
 
-<s:if test="#session.orders.size > 0">
+<s:if test="#session.order_list_admin.size > 0">
     <s:form theme="simple" action="updateUserById" method="POST">
         <s:actionerror/>
         <s:actionmessage/>
         <table id="cart" class="table table-striped">
             <tr><th>ID</th><th>书名</th><th>书籍ID</th><th>价格</th><th>用户ID</th><th>登录名</th><th>数量</th><th>总价</th><th>删除</th></tr>
-            <s:iterator value="#session.orders">
+            <s:iterator value="#session.order_list_admin">
                 <tr>
                     <td>
                         <s:property value="orderId"/>

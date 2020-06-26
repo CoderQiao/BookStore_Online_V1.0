@@ -48,9 +48,7 @@ public class OrderAction extends AbstractEntityActionImpl<Order> implements Sess
         }
         //session.remove("orders",orders);
         //session.replace("orders",new HashMap<Integer,Order>());
-
-        Map<Integer,Order> orders1 = new HashMap<Integer, Order>();
-        session.put("orders",orders1);
+        session.remove("orders",orders);
         session.remove("order_list",order_list);
         return SUCCESS;
     }
@@ -60,10 +58,10 @@ public class OrderAction extends AbstractEntityActionImpl<Order> implements Sess
         if(user == null){
             return INPUT;
         }
-        List<Order> orders = this.getService().findBy("userId",user.getUserId());
-        session.put("orders",orders);
+        List<Order> order_list = this.getService().findBy("userId",user.getUserId());
+        session.put("order_list",order_list);
         long totalPrice = 0;
-        for(Order order : orders){
+        for(Order order : order_list){
             totalPrice += order.getPrice();
         }
         session.put("totalPrice",totalPrice);
@@ -75,8 +73,8 @@ public class OrderAction extends AbstractEntityActionImpl<Order> implements Sess
         if(admin == null){
             return INPUT;
         }
-        List<Order> orders = this.getService().findAll();
-        session.put("orders",orders);
+        List<Order> order_list_admin = this.getService().findAll();
+        session.put("order_list_admin",order_list_admin);
         return SUCCESS;
     }
 
