@@ -14,7 +14,13 @@
   <s:include value="/WEB-INF/view/nav.jsp"/>
   <div id="main-container" class="clearfix">
     <div id="aside">
-      <s:action name="category-list" executeResult="true" namespace="/"/>
+      <s:if test="#session.categories.size>0">
+        <s:include value="/WEB-INF/view/menu.jsp"></s:include>
+      </s:if>
+      <s:else>
+        <s:action name="category-list" executeResult="true" namespace="/"/>
+      </s:else>
+
     </div>
     <div id="content">
       <s:if test="#parameters.page!=null">
