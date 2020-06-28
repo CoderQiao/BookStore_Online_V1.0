@@ -7,7 +7,7 @@
   <s:form theme="simple" action="AddOrders" method="post">
     <table id="cart" class="table table-striped">
       <tr><th>图书名称</th><th>价格</th><th>数量</th><th>操作</th></tr>
-    <s:iterator value="#session.order_list">
+    <s:iterator value="#session.order_list_cart">
       <tr>
 	    <td>
 	      <input type="hidden" name="bookId" value="<s:property value="bookId"/>"/>

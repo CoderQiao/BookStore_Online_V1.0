@@ -37,10 +37,10 @@ public class OrderAction extends AbstractEntityActionImpl<Order> implements Sess
         if(user == null){
             return INPUT;
         }
-        List<Order> order_list = (List<Order>) session.get("order_list");
+        List<Order> order_list_cart = (List<Order>) session.get("order_list_cart");
         Map<Integer,Order> orders = (Map<Integer,Order>)session.get("orders");
         long priceTotal = (long)session.get("totalPrice");
-        for(Order order : order_list){
+        for(Order order : order_list_cart){
             order.setPriceTotal(priceTotal);
             order.setUserId(user.getUserId());
             order.setLoginName(user.getLoginName());
@@ -49,7 +49,7 @@ public class OrderAction extends AbstractEntityActionImpl<Order> implements Sess
         //session.remove("orders",orders);
         //session.replace("orders",new HashMap<Integer,Order>());
         session.remove("orders",orders);
-        session.remove("order_list",order_list);
+        session.remove("order_list_cart",order_list_cart);
         return SUCCESS;
     }
 

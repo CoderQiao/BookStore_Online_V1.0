@@ -105,14 +105,14 @@ public class ShopCartAction extends ActionSupport implements SessionAware {
 
     public void updateOrderList(){
         Map<Integer,Order> orders = (Map<Integer, Order>) session.get("orders");
-        List<Order> order_list = new ArrayList<Order>();
+        List<Order> order_list_cart = new ArrayList<Order>();
         totalPrice = 0;
         for(int bookId : orders.keySet()){
             totalPrice += orders.get(bookId).getPriceTotal() * orders.get(bookId).getBookNumber();
-            order_list.add(orders.get(bookId));
+            order_list_cart.add(orders.get(bookId));
         }
         session.put("totalPrice",totalPrice);
-        session.put("order_list",order_list);
+        session.put("order_list_cart",order_list_cart);
     }
 
     public String deleteFromShopCart(){

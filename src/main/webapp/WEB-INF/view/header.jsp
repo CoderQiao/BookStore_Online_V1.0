@@ -21,8 +21,8 @@
       <a href="index.jsp?page=user">个人信息</a>|
     </s:else>
       <a class="icon-24 cart" href="index.jsp?page=cart">购物车</a>
-      <s:if test="#session.order_list!=null">
-        <sup class="badge"><s:property value="#session.order_list.size"/></sup>
+      <s:if test="#session.order_list_cart!=null">
+        <sup class="badge"><s:property value="#session.order_list_cart.size"/></sup>
       </s:if>
 
     <s:form action="searchBookByName" theme="simple" method="get" cssClass="search-bar">
